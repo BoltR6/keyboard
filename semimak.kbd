@@ -26,9 +26,9 @@
 ;;
 ;; There are currently a maximum of 25 layers allowed.
 (deflayer semimak
-  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  f    l    h    v    z    q    w    u    o    y    [    ]    \
-  caps s    r    n    t    k    c    d    e    a    l    ;    ret
+  caps s    r    n    t    k    c    d    e    a    i    ;    ret
   x    '    b    m    j    _    p    g    ,    .    /    rsft
   lctl lmet lalt           spc            rshift rmet rctl
 )
@@ -40,14 +40,14 @@
 ;; Aliases are referred to by `@<alias_name>`.
 (defalias
   ;; tap: backtick (grave), hold: toggle layer-switching layer while held
-  grl (tap-hold 200 200 grv (layer-toggle layers))
+  ;;grl (tap-hold 200 200 grv (layer-toggle layers))
 
   ;; layer-switch changes the base layer.
-  dvk (layer-switch dvorak)
-  qwr (layer-switch qwerty)
+  ;;dvk (layer-switch dvorak)
+  ;;qwr (layer-switch qwerty)
 
   ;; tap for capslk, hold for lctl
-  cap (tap-hold 200 200 caps lctl)
+  ;; cap (tap-hold 200 200 caps lctl)
 )
 
 ;; The `lrld` action stands for "live reload". This will re-parse everything
@@ -60,7 +60,7 @@
 ;; underscore _ which means "transparent". Transparent means the base layer
 ;; behaviour is used when pressing that key.
 (deflayer layers
-  _    @qwr @dvk lrld _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
