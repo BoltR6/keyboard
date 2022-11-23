@@ -4,7 +4,7 @@
   ;; but I didn't find any keyboard device in there in my VM.
   ;;linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
   linux-dev /dev/input/by-id/usb-ASUSTeK_Computer_Inc._N-KEY_Device-if02-event-kbd
-
+)
 
 ;; Only one defsrc is allowed.
 ;;
@@ -21,15 +21,12 @@
 )
 
 ;; The first layer defined is the layer that will be active by default when
-;; kanata starts up. This layer is the standard QWERTY layout except for the
-;; backtick/grave key (@grl) which is an alias for a tap-hold key.
-;;
-;; There are currently a maximum of 25 layers allowed.
+;; kanata starts up. 
 (deflayer semimak
-  grv 1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  f    l    h    v    z    q    w    u    o    y    [    ]    \
-  caps s    r    n    t    k    c    d    e    a    i    ;    ret
-  x    '    b    m    j    _    p    g    ,    .    /    rsft
+  grv  XX  XX    [    ]   XX   XX   XX   XX   XX    -    =    XX    bspc
+  tab  f    l    h    v    z    XX    q    w    u    o    y    @scd    ;
+  caps  s    r    n    t    k    XX    c    d    e    a    i    ret
+  x      '    b    m    j    XX   XX    p    g    ,    .    rsft
   lctl lmet lalt           spc            rshift rmet rctl
 )
 
@@ -39,30 +36,14 @@
 ;;
 ;; Aliases are referred to by `@<alias_name>`.
 (defalias
-  ;; tap: backtick (grave), hold: toggle layer-switching layer while held
-  ;;grl (tap-hold 200 200 grv (layer-toggle layers))
-
-  ;; layer-switch changes the base layer.
-  ;;dvk (layer-switch dvorak)
-  ;;qwr (layer-switch qwerty)
-
-  ;; tap for capslk, hold for lctl
-  ;; cap (tap-hold 200 200 caps lctl)
+  ;; Hold prtsc to toggle to symbol keys, otherwise just act as prtsc anyway
+  scd  (layer-toggle secondlayer)
 )
 
-;; The `lrld` action stands for "live reload". This will re-parse everything
-;; except for defcfg. I.e. in Linux, you cannot live reload and switch keyboard
-;; devices for the time being.
-;;
-;; The keys 1 and 2 switch the base layer to qwerty and dvorak respectively.
-;;
-;; Apart from the layer switching and live reload, all other keys are the
-;; underscore _ which means "transparent". Transparent means the base layer
-;; behaviour is used when pressing that key.
-(deflayer layers
+(deflayer secondlayer
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
+  _    1    2    3    4    _    _    _    _    _    _    _    _    _
+  _    5    6    7    8    _    _    _    _    _    _    _    _
+  _    \    /    9    0    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
